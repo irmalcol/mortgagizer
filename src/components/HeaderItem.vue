@@ -1,6 +1,8 @@
 <template>
-  <div class="header-value">{{ this.value }}</div>
-  <div class="header-label">{{ this.label }}</div>
+  <div class="header-item">
+    <div class="header-value">{{ value }}</div>
+    <div class="header-label">{{ label }}</div>
+  </div>
 </template>
 
 <script>
@@ -12,3 +14,10 @@ export default {
   }
 };
 </script>
+
+<style scoped lang="scss">
+.header-item {
+  display: flex;
+  flex-direction: column;
+}
+</style>
