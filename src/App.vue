@@ -11,18 +11,32 @@
     <HeaderItem value="$2,000" label="5 yr COB" />
     <HeaderItem value="$50,000" label="Total COB" />
   </div>
+  <div class="detailed-payment-table">
+    <DetailedRow />
+  </div>
+  <div @click="testytest">testytest</div>
 </template>
 
 <script>
+import DetailedRow from "./components/DetailedRow.vue";
 import HeaderItem from "./components/HeaderItem.vue";
 import HelloWorld from "./components/HelloWorld.vue";
+import MortgageCalculator from "./mortgageCalculator.js";
 
 export default {
   name: "App",
   components: {
+    DetailedRow,
     HelloWorld,
     HeaderItem
   },
+  methods: {
+    testytest() {
+      const testytest = new MortgageCalculator(500000, 0.05, 2);
+      testytest.generateMortgageData(5000);
+      // console.log(testytest);
+    }
+  }
 };
 </script>
 
