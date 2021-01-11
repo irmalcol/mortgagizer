@@ -1,4 +1,4 @@
-class MortgageCalculator {
+export default class MortgageCalculator {
   // InterestRate must be annual interest rate in decimal form
   constructor(principal, interestRate, annualCompoundingPeriods = 2) {
     this.ear = this.calculateEar(interestRate, annualCompoundingPeriods);
@@ -66,8 +66,6 @@ class MortgageCalculator {
       costOfBorrowing
     );
     console.log(row);
-    rows.append(row);
+    rows.push(row);
   }
 }
-
-export default { MortgageCalculator };
