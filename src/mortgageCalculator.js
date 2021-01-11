@@ -1,7 +1,8 @@
 export default class MortgageCalculator {
-  // InterestRate must be annual interest rate in decimal form
+  // InterestRate must be annual interest rate in percentage form
   constructor(principal, interestRate, annualCompoundingPeriods = 2) {
-    this.ear = this.calculateEar(interestRate, annualCompoundingPeriods);
+    this.interestRate = interestRate / 100;
+    this.ear = this.calculateEar(this.interestRate, annualCompoundingPeriods);
     this.originalPrincipal = principal;
   }
 
