@@ -4,7 +4,17 @@ export default class MortgageCalculator {
     this.interestRate = interestRate / 100;
     this.ear = this.calculateEar(this.interestRate, annualCompoundingPeriods);
     this.originalPrincipal = principal;
+    console.log(interestRate, this.interestRate);
   }
+
+  detailedRowTemplate = {
+    year: 0,
+    month: 0,
+    payment: 0,
+    principalPaidDown: 0,
+    remainingPrincipal: 0,
+    totalCOB: 0
+  };
 
   // EAR is effective annual interest rate
   calculateEar(interestRate, annualCompoundingPeriods) {
@@ -31,7 +41,7 @@ export default class MortgageCalculator {
     startingCOB,
     extraPayment = 0
   ) {
-    const yearCount = monthCount % 12;
+    const yearCount = Math.floor(monthCount++ / 12);
     const interestPaymentPortion = this.calculateInterestPaymentPortion(
       startingPrincipal,
       this.ear
@@ -57,16 +67,29 @@ export default class MortgageCalculator {
 
   generateMortgageData(regularPayment) {
     const rows = [];
-    let principal = this.originalPrincipal;
-    let month = 1;
-    let costOfBorrowing = 0;
-    let row = this.generateDetailedLine(
-      month,
-      principal,
-      regularPayment,
-      costOfBorrowing
-    );
-    console.log(row);
-    rows.push(row);
+    let row = this.detailedRowTemplate;
+    row.payment = regularPayment;
+    row.remainingPrincipal = this.originalPrincipal;
+
+    while (row.remainingPrincipal > 0) {
+      row = this.generateDetailedLine(
+        row.month,
+        row.remainingPrincipal,
+        row.payment,
+        row.totalCOB
+      );
+      rows.push(row);
+
+      if (row.month > 500) {
+        console.warn(
+          "Too many months in mortgage. Calculation probably unstable. Aborting."
+        );
+        break;
+      }
+    }
+
+    console.log(rows);
+
+    return rows;
   }
 }
