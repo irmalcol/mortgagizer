@@ -1,10 +1,10 @@
 export default class MortgageCalculator {
   // InterestRate must be annual interest rate in percentage form
   constructor(principal, interestRate, annualCompoundingPeriods = 2) {
-    this.interestRate = interestRate / 100;
+    this.interestRate = interestRate;
     this.ear = this.calculateEar(this.interestRate, annualCompoundingPeriods);
+    this.effectiveMonthlyInterestRate = this.ear / 12;
     this.originalPrincipal = principal;
-    console.log(interestRate, this.interestRate);
   }
 
   detailedRowTemplate = {
@@ -44,7 +44,7 @@ export default class MortgageCalculator {
     const yearCount = Math.floor(monthCount++ / 12);
     const interestPaymentPortion = this.calculateInterestPaymentPortion(
       startingPrincipal,
-      this.ear
+      this.effectiveMonthlyInterestRate
     );
     const principalPaymentPortion = this.calculatePrincipalPaymentPortion(
       regularPayment,
@@ -59,6 +59,7 @@ export default class MortgageCalculator {
       year: yearCount,
       month: monthCount,
       payment: payment,
+      interestPayment: interestPaymentPortion,
       principalPaidDown: principalPaidDown,
       remainingPrincipal: remainingPrincipal,
       totalCOB: totalCOB
