@@ -14,7 +14,7 @@
   <div class="detailed-payment-table">
     <DetailedRow />
   </div>
-  <div @click="testytest">testytest</div>
+  <div @click="generateMortgageData">GENERATE</div>
 </template>
 
 <script>
@@ -31,10 +31,9 @@ export default {
     HeaderItem
   },
   methods: {
-    testytest() {
-      const testytest = new MortgageCalculator(500000, 0.05, 2);
-      testytest.generateMortgageData(5000);
-      // console.log(testytest);
+    generateMortgageData() {
+      const mortgage = new MortgageCalculator(500000, 0.05, 2);
+      return mortgage.generateMortgageData(4000);
     }
   }
 };

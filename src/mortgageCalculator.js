@@ -11,7 +11,8 @@ export default class MortgageCalculator {
     year: 0,
     month: 0,
     payment: 0,
-    principalPaidDown: 0,
+    interestPayment: 0,
+    principalPayment: 0,
     remainingPrincipal: 0,
     totalCOB: 0
   };
@@ -60,7 +61,7 @@ export default class MortgageCalculator {
       month: monthCount,
       payment: payment,
       interestPayment: interestPaymentPortion,
-      principalPaidDown: principalPaidDown,
+      principalPayment: principalPaidDown,
       remainingPrincipal: remainingPrincipal,
       totalCOB: totalCOB
     };
