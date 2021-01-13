@@ -11,9 +11,19 @@
     <HeaderItem value="$2,000" label="5 yr COB" />
     <HeaderItem value="$50,000" label="Total COB" />
   </div>
-  <div class="detailed-payment-table">
-    <DetailedRow />
-  </div>
+  <ul class="detailed-payment-table">
+    <DetailedRow
+      v-for="(mortgageRow, index) in mortgage"
+      :key="index"
+      :year="mortgageRow.year"
+      :month="mortgageRow.month"
+      :payment="mortgageRow.payment"
+      :interestPayment="mortgageRow.interestPayment"
+      :principalPayment="mortgageRow.principalPayment"
+      :remainingPrincipal="mortgageRow.remainingPrincipal"
+      :totalCOB="mortgageRow.totalCOB"
+    />
+  </ul>
   <div @click="generateMortgageData">GENERATE</div>
 </template>
 
@@ -30,10 +40,15 @@ export default {
     HelloWorld,
     HeaderItem
   },
+  data: function() {
+    return {
+      mortgage: []
+    };
+  },
   methods: {
     generateMortgageData() {
       const mortgage = new MortgageCalculator(500000, 0.05, 2);
-      return mortgage.generateMortgageData(4000);
+      this.mortgage = mortgage.generateMortgageData(4000);
     }
   }
 };
