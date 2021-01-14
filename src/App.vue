@@ -11,24 +11,22 @@
     <HeaderItem value="$2,000" label="5 yr COB" />
     <HeaderItem value="$50,000" label="Total COB" />
   </div>
-  <ul class="detailed-payment-table">
-    <DetailedRow
-      v-for="(mortgageRow, index) in mortgage"
-      :key="index"
-      :year="mortgageRow.year"
-      :month="mortgageRow.month"
-      :payment="mortgageRow.payment"
-      :interestPayment="mortgageRow.interestPayment"
-      :principalPayment="mortgageRow.principalPayment"
-      :remainingPrincipal="mortgageRow.remainingPrincipal"
-      :totalCOB="mortgageRow.totalCOB"
-    />
-  </ul>
+  <DetailedTable
+    :mortgageData="mortgage"
+    :monthLabel="monthLabel"
+    :yearLabel="yearLabel"
+    :paymentLabel="paymentLabel"
+    :interestPaymentLabel="interestPaymentLabel"
+    :principalPaymentLabel="principalPaymentLabel"
+    :extraPaymentLabel="extraPaymentLabel"
+    :remainingPrincipalLabel="remainingPrincipalLabel"
+    :totalCOBLabel="totalCOBLabel"
+  />
   <div @click="generateMortgageData">GENERATE</div>
 </template>
 
 <script>
-import DetailedRow from "./components/DetailedRow.vue";
+import DetailedTable from "./components/DetailedTable.vue";
 import HeaderItem from "./components/HeaderItem.vue";
 import HelloWorld from "./components/HelloWorld.vue";
 import MortgageCalculator from "./mortgageCalculator.js";
@@ -36,13 +34,21 @@ import MortgageCalculator from "./mortgageCalculator.js";
 export default {
   name: "App",
   components: {
-    DetailedRow,
+    DetailedTable,
     HelloWorld,
     HeaderItem
   },
   data: function() {
     return {
-      mortgage: []
+      mortgage: [],
+      yearLabel: "Year",
+      monthLabel: "Month",
+      paymentLabel: "Payment",
+      interestPaymentLabel: "Interest",
+      principalPaymentLabel: "Principal",
+      extraPaymentLabel: "Extra Payment",
+      remainingPrincipalLabel: "Remaining Principal",
+      totalCOBLabel: "Cost of Borrowing"
     };
   },
   methods: {
