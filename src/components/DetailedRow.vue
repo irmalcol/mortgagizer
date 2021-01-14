@@ -21,6 +21,7 @@ export default {
     payment: Number,
     interestPayment: Number,
     principalPayment: Number,
+    extraPayment: Number,
     remainingPrincipal: Number,
     totalCOB: Number
   },
