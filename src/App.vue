@@ -11,8 +11,8 @@
     <HeaderItem :value="formattedAnnualInterestRate" label="Interest Rate" />
     <HeaderItem :value="formattedMonthlyPayment" label="Monthly Payment" />
     <HeaderItem :value="formattedTimeRemaining" label="Time Remaining" />
-    <HeaderItem value="$2,000" label="5 yr COB" />
-    <HeaderItem value="$50,000" label="Total COB" />
+    <HeaderItem :value="formattedFiveYearCOB" label="5 yr COB" />
+    <HeaderItem :value="formattedTotalCOB" label="Total COB" />
   </div>
   <DetailedTable
     :mortgageData="mortgage"
@@ -76,6 +76,24 @@ export default {
     },
     formattedMonthlyPayment() {
       return this.formatCurrency(this.monthlyPayment);
+    },
+    formattedFiveYearCOB() {
+      let fiveYearCOB = 0;
+      const mortgageLength = this.mortgage.length;
+      const fiveYearsInMonths = 60;
+      if (mortgageLength > 0 && mortgageLength < 60) {
+        fiveYearCOB = this.mortgage[mortgageLength - 1].totalCOB;
+      } else if (mortgageLength >= 60) {
+        fiveYearCOB = this.mortgage[fiveYearsInMonths - 1].totalCOB;
+      }
+      return this.formatCurrency(fiveYearCOB);
+    },
+    formattedTotalCOB() {
+      let totalCOB = 0;
+      if (this.mortgage.length > 0) {
+        totalCOB = this.mortgage[this.mortgage.length - 1].totalCOB;
+      }
+      return this.formatCurrency(totalCOB);
     }
   },
   methods: {
