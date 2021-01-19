@@ -104,8 +104,12 @@ export default {
   },
   methods: {
     generateMortgageData() {
-      const mortgage = new MortgageCalculator(500000, 0.05, 2);
-      this.mortgage = mortgage.generateMortgageData(4000);
+      const mortgage = new MortgageCalculator(
+        this.startingPrincipal,
+        this.annualInterestRate,
+        2
+      );
+      this.mortgage = mortgage.generateMortgageData(this.monthlyPayment);
     },
     formatCurrency: function(amount) {
       const formatter = new Intl.NumberFormat("en-CA", {
