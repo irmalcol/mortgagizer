@@ -8,11 +8,14 @@
     />
   </div>
   <div class="header-row">
-    <HeaderItem :value="formattedAnnualInterestRate" label="Interest Rate" />
-    <HeaderItem :value="formattedMonthlyPayment" label="Monthly Payment" />
-    <HeaderItem :value="formattedTimeRemaining" label="Time Remaining" />
-    <HeaderItem :value="formattedFiveYearCOB" label="5 yr COB" />
-    <HeaderItem :value="formattedTotalCOB" label="Total COB" />
+    <HeaderItem
+      :value="formattedAnnualInterestRate"
+      :label="annualInterestRateLabel"
+    />
+    <HeaderItem :value="formattedMonthlyPayment" :label="paymentLabel" />
+    <HeaderItem :value="formattedTimeRemaining" :label="timeRemainingLabel" />
+    <HeaderItem :value="formattedFiveYearCOB" :label="fiveYearCOBLabel" />
+    <HeaderItem :value="formattedTotalCOB" :label="totalCOBLabel" />
   </div>
   <DetailedTable
     :mortgageData="mortgage"
@@ -47,11 +50,14 @@ export default {
       yearLabel: "Year",
       monthLabel: "Month",
       paymentLabel: "Payment",
+      annualInterestRateLabel: "Annual Interest Rate",
       interestPaymentLabel: "Interest",
       principalPaymentLabel: "Principal",
       extraPaymentLabel: "Extra Payment",
       remainingPrincipalLabel: "Remaining Principal",
-      totalCOBLabel: "Cost of Borrowing",
+      fiveYearCOBLabel: "5 Year Cost of Borrowing",
+      totalCOBLabel: "Total Cost of Borrowing",
+      timeRemainingLabel: "Time Remaining",
       startingPrincipal: 500000,
       annualInterestRate: 0.05,
       monthlyPayment: 5000
@@ -63,8 +69,8 @@ export default {
         return "0 years, 0 months";
       } else {
         const lastPaymentData = this.mortgage[this.mortgage.length - 1];
-        const years = lastPaymentData.years;
-        const months = lastPaymentData.months % 12;
+        const years = String(lastPaymentData.year);
+        const months = String(lastPaymentData.month % 12);
         return `${years} years, ${months} months`;
       }
     },
