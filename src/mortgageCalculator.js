@@ -42,7 +42,7 @@ export default class MortgageCalculator {
     startingCOB,
     extraPayment = 0
   ) {
-    const yearCount = Math.floor(monthCount++ / 12);
+    const yearCount = Math.floor(monthCount++ / 12 + 1);
     const interestPaymentPortion = this.calculateInterestPaymentPortion(
       startingPrincipal,
       this.effectiveMonthlyInterestRate
