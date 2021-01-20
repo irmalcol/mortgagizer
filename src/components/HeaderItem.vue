@@ -17,7 +17,6 @@ export default {
 
 <style scoped lang="scss">
 .header-item {
-  display: flex;
-  flex-direction: column;
+  justify-self: start;
 }
 </style>

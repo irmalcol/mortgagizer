@@ -1,21 +1,23 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Welcome to Your Vue.js App" />
-  <div class="header-row">
-    <HeaderItem
-      :value="formattedStartingPrincipal"
-      label="Outstanding Principal"
-    />
-  </div>
-  <div class="header-row">
-    <HeaderItem
-      :value="formattedAnnualInterestRate"
-      :label="annualInterestRateLabel"
-    />
-    <HeaderItem :value="formattedMonthlyPayment" :label="paymentLabel" />
-    <HeaderItem :value="formattedTimeRemaining" :label="timeRemainingLabel" />
-    <HeaderItem :value="formattedFiveYearCOB" :label="fiveYearCOBLabel" />
-    <HeaderItem :value="formattedTotalCOB" :label="totalCOBLabel" />
+  <div class="detailed-header">
+    <div class="header-row single-header-item">
+      <HeaderItem
+        :value="formattedStartingPrincipal"
+        label="Outstanding Principal"
+      />
+    </div>
+    <div class="header-row multiple-header-item">
+      <HeaderItem
+        :value="formattedAnnualInterestRate"
+        :label="annualInterestRateLabel"
+      />
+      <HeaderItem :value="formattedMonthlyPayment" :label="paymentLabel" />
+      <HeaderItem :value="formattedTimeRemaining" :label="timeRemainingLabel" />
+      <HeaderItem :value="formattedFiveYearCOB" :label="fiveYearCOBLabel" />
+      <HeaderItem :value="formattedTotalCOB" :label="totalCOBLabel" />
+    </div>
   </div>
   <DetailedTable
     :mortgageData="mortgage"
@@ -137,7 +139,19 @@ export default {
 }
 
 .header-row {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+
+  &.single-header-item {
+    grid-template-columns: 1fr;
+  }
+
+  &.multiple-header-item {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
+
+// .header-row {
+//   display: flex;
+//   flex-wrap: wrap;
+// }
 </style>
