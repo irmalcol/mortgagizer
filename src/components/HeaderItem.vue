@@ -15,8 +15,15 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .header-item {
-  justify-self: start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.header-label {
+  color: var(--label-text-color);
+  // color: var(--main-text-color);
 }
 </style>
