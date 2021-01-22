@@ -1,5 +1,5 @@
 <template>
-  <div class="detailed-row">
+  <li class="detailed-row">
     <div>{{ year }}</div>
     <div>{{ month }}</div>
     <div>{{ formattedPrincipalPayment }}</div>
@@ -8,7 +8,7 @@
     <div>{{ formattedPayment }}</div>
     <div>{{ formattedRemainingPrincipal }}</div>
     <div>{{ formattedTotalCOB }}</div>
-  </div>
+  </li>
 </template>
 
 <script>
