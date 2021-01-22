@@ -129,12 +129,6 @@ export default {
 </script>
 
 <style lang="scss">
-:root {
-  --main-text-color: #2c3e50;
-  --main-font-family: Avenir, Helvetica, Arial, sans-serif;
-  --label-text-color: #5f7183;
-}
-
 #app {
   font-family: var(--main-font-family);
   -webkit-font-smoothing: antialiased;
