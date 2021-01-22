@@ -139,19 +139,7 @@ export default {
 }
 
 .header-row {
-  display: grid;
-
-  &.single-header-item {
-    grid-template-columns: 1fr;
-  }
-
-  &.multiple-header-item {
-    grid-template-columns: repeat(5, 1fr);
-  }
+  display: flex;
+  flex-wrap: wrap;
 }
-
-// .header-row {
-//   display: flex;
-//   flex-wrap: wrap;
-// }
 </style>

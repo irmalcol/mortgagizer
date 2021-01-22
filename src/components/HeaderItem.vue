@@ -20,6 +20,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding: 0 2rem 0 0;
 }
 
 .header-value {
@@ -29,6 +30,5 @@ export default {
 .header-label {
   color: var(--label-text-color);
   font-size: var(--header-label-font-size);
-  // color: var(--main-text-color);
 }
 </style>
