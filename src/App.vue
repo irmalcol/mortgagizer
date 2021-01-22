@@ -129,6 +129,11 @@ export default {
 </script>
 
 <style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
   font-family: var(--main-font-family);
   -webkit-font-smoothing: antialiased;
