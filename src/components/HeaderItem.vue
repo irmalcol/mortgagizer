@@ -15,15 +15,20 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .header-item {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
+.header-value {
+  font-size: var(--header-value-font-size);
+}
+
 .header-label {
   color: var(--label-text-color);
+  font-size: var(--header-label-font-size);
   // color: var(--main-text-color);
 }
 </style>

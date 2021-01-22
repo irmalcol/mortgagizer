@@ -1,6 +1,8 @@
 :root {
+    font-size: 100%;
     --main-text-color: #2c3e50;
-    --main-text-color: #BADA55;
     --main-font-family: Avenir, Helvetica, Arial, sans-serif;
+    --header-value-font-size: 1.2rem;
+    --header-label-font-size: 0.8rem; 
     --label-text-color: #5f7183;
-  }
+}
