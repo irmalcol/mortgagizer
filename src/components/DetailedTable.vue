@@ -1,28 +1,32 @@
 <template>
-  <ul class="detailed-payment-table">
-    <li class="table-heading">
-      <div>{{ yearLabel }}</div>
-      <div>{{ monthLabel }}</div>
-      <div>{{ principalPaymentLabel }}</div>
-      <div>{{ interestPaymentLabel }}</div>
-      <!-- <div>{{ extraPaymentLabel }}</div> -->
-      <div>{{ paymentLabel }}</div>
-      <div>{{ remainingPrincipalLabel }}</div>
-      <div>{{ totalCOBLabel }}</div>
-    </li>
-    <DetailedRow
-      v-for="(mortgageRow, index) in mortgageData"
-      :key="index"
-      :year="mortgageRow.year"
-      :month="mortgageRow.month"
-      :payment="mortgageRow.payment"
-      :interestPayment="mortgageRow.interestPayment"
-      :principalPayment="mortgageRow.principalPayment"
-      :extraPayment="mortgageRow.extraPayment"
-      :remainingPrincipal="mortgageRow.remainingPrincipal"
-      :totalCOB="mortgageRow.totalCOB"
-    />
-  </ul>
+  <table class="detailed-payment-table">
+    <thead class="table-heading">
+      <tr>
+        <th>{{ yearLabel }}</th>
+        <th>{{ monthLabel }}</th>
+        <th>{{ principalPaymentLabel }}</th>
+        <th>{{ interestPaymentLabel }}</th>
+        <!-- <th>{{ extraPaymentLabel }}</th> -->
+        <th>{{ paymentLabel }}</th>
+        <th>{{ remainingPrincipalLabel }}</th>
+        <th>{{ totalCOBLabel }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <DetailedRow
+        v-for="(mortgageRow, index) in mortgageData"
+        :key="index"
+        :year="mortgageRow.year"
+        :month="mortgageRow.month"
+        :payment="mortgageRow.payment"
+        :interestPayment="mortgageRow.interestPayment"
+        :principalPayment="mortgageRow.principalPayment"
+        :extraPayment="mortgageRow.extraPayment"
+        :remainingPrincipal="mortgageRow.remainingPrincipal"
+        :totalCOB="mortgageRow.totalCOB"
+      />
+    </tbody>
+  </table>
 </template>
 
 <script>
@@ -48,9 +52,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-li {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+  text-align: left;
 }
 </style>

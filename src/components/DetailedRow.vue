@@ -1,14 +1,14 @@
 <template>
-  <li class="detailed-row">
-    <div>{{ year }}</div>
-    <div>{{ month }}</div>
-    <div>{{ formattedPrincipalPayment }}</div>
-    <div>{{ formattedInterestPayment }}</div>
-    <!-- <div>{{ extraPayment }}</div> -->
-    <div>{{ formattedPayment }}</div>
-    <div>{{ formattedRemainingPrincipal }}</div>
-    <div>{{ formattedTotalCOB }}</div>
-  </li>
+  <tr class="detailed-row">
+    <td class="detailed-year">{{ year }}</td>
+    <td class="detailed-month">{{ month }}</td>
+    <td class="detailed-pricipal">{{ formattedPrincipalPayment }}</td>
+    <td class="detailed-interest">{{ formattedInterestPayment }}</td>
+    <!-- <td class="detailed-extra">{{ extraPayment }}</td> -->
+    <td class="detailed-payment">{{ formattedPayment }}</td>
+    <td class="detailed-remaining">{{ formattedRemainingPrincipal }}</td>
+    <td class="detailed-totalCOB">{{ formattedTotalCOB }}</td>
+  </tr>
 </template>
 
 <script>
@@ -59,13 +59,27 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.detailed-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+td {
+  border: 1px solid #999;
+  padding: 0.5rem;
 }
 
-// .detailed-row-item {
-//   padding: 0 5px;
-// }
+.detailed-year,
+.detailed-month {
+  min-width: 2rem;
+}
+
+.detailed-pricipal,
+.detailed-interest,
+.detailed-extra,
+.detailed-payment {
+  min-width: 7rem;
+  text-align: right;
+}
+
+.detailed-remaining,
+.detailed-totalCOB {
+  min-width: 8rem;
+  text-align: right;
+}
 </style>

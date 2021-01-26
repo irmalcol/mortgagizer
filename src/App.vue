@@ -129,10 +129,15 @@ export default {
 </script>
 
 <style lang="scss">
+// Global styles
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+table {
+  border-collapse: collapse;
 }
 
 #app {
