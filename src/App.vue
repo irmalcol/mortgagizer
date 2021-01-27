@@ -1,24 +1,20 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Welcome to Your Vue.js App" />
-  <div class="detailed-header">
-    <div class="header-row single-header-item">
-      <HeaderItem
-        :value="formattedStartingPrincipal"
-        label="Outstanding Principal"
-      />
-    </div>
-    <div class="header-row multiple-header-item">
-      <HeaderItem
-        :value="formattedAnnualInterestRate"
-        :label="annualInterestRateLabel"
-      />
-      <HeaderItem :value="formattedMonthlyPayment" :label="paymentLabel" />
-      <HeaderItem :value="formattedTimeRemaining" :label="timeRemainingLabel" />
-      <HeaderItem :value="formattedFiveYearCOB" :label="fiveYearCOBLabel" />
-      <HeaderItem :value="formattedTotalCOB" :label="totalCOBLabel" />
-    </div>
-  </div>
+  <DetailedHeader
+    :startingPrincipal="formattedStartingPrincipal"
+    :startingPrincipalLabel="startingPrincipalLabel"
+    :interestRate="formattedAnnualInterestRate"
+    :interestRateLabel="annualInterestRateLabel"
+    :monthlyPayment="formattedMonthlyPayment"
+    :monthlyPaymentLabel="paymentLabel"
+    :timeRemaining="formattedTimeRemaining"
+    :timeRemainingLabel="timeRemainingLabel"
+    :fiveYearCOB="formattedFiveYearCOB"
+    :fiveYearCOBLabel="fiveYearCOBLabel"
+    :totalCOB="formattedTotalCOB"
+    :totalCOBLabel="totalCOBLabel"
+  />
   <DetailedTable
     :mortgageData="mortgage"
     :monthLabel="monthLabel"
@@ -34,17 +30,17 @@
 </template>
 
 <script>
+import DetailedHeader from "./components/DetailedHeader.vue";
 import DetailedTable from "./components/DetailedTable.vue";
-import HeaderItem from "./components/HeaderItem.vue";
 import HelloWorld from "./components/HelloWorld.vue";
 import MortgageCalculator from "./mortgageCalculator.js";
 
 export default {
   name: "App",
   components: {
+    DetailedHeader,
     DetailedTable,
-    HelloWorld,
-    HeaderItem
+    HelloWorld
   },
   data: function() {
     return {
@@ -61,6 +57,7 @@ export default {
       totalCOBLabel: "Total Cost of Borrowing",
       timeRemainingLabel: "Time Remaining",
       startingPrincipal: 500000,
+      startingPrincipalLabel: "Starting Principal",
       annualInterestRate: 0.05,
       monthlyPayment: 5000
     };
