@@ -1,6 +1,4 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
   <DetailedHeader
     :startingPrincipal="formattedStartingPrincipal"
     :startingPrincipalLabel="startingPrincipalLabel"
@@ -32,15 +30,13 @@
 <script>
 import DetailedHeader from "./components/DetailedHeader.vue";
 import DetailedTable from "./components/DetailedTable.vue";
-import HelloWorld from "./components/HelloWorld.vue";
 import MortgageCalculator from "./mortgageCalculator.js";
 
 export default {
   name: "App",
   components: {
     DetailedHeader,
-    DetailedTable,
-    HelloWorld
+    DetailedTable
   },
   data: function() {
     return {
