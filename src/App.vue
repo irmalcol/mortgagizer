@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import DetailedMortgage from "@/pages/DetailedMortgage.vue";
+import DetailedMortgage from "@/pages/detailed-mortgage/DetailedMortgage.vue";
 
 export default {
   name: "App",
