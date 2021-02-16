@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import DetailedTable from "@/components/DetailedTable.vue";
+import DetailedTable from "./DetailedTable.vue";
 import MortgageCalculator from "@/mortgageCalculator.js";
 import HeaderItem from "@/components/HeaderItem.vue";
 
