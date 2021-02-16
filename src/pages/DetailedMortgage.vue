@@ -1,23 +1,33 @@
 <template>
-  <DetailedHeader
-    :startingPrincipal="formattedStartingPrincipal"
-    :startingPrincipalLabel="startingPrincipalLabel"
-    :interestRate="formattedAnnualInterestRate"
-    :interestRateLabel="annualInterestRateLabel"
-    :monthlyPayment="formattedMonthlyPayment"
-    :monthlyPaymentLabel="paymentLabel"
-    :timeRemaining="formattedTimeRemaining"
-    :timeRemainingLabel="timeRemainingLabel"
-    :fiveYearCOB="formattedFiveYearCOB"
-    :fiveYearCOBLabel="fiveYearCOBLabel"
-    :totalCOB="formattedTotalCOB"
-    :totalCOBLabel="totalCOBLabel"
-  />
+  <div class="detailed-header">
+    <div class="header-row single-header-item">
+      <header-item
+        :value="formattedStartingPrincipal"
+        :label="startingPrincipalLabel"
+      />
+    </div>
+    <div class="header-row multiple-header-item">
+      <header-item
+        :value="formattedAnnualInterestRate"
+        :label="annualInterestRateLabel"
+      />
+      <header-item
+        :value="formattedMonthlyPayment"
+        :label="monthlyPaymentLabel"
+      />
+      <header-item
+        :value="formattedTimeRemaining"
+        :label="timeRemainingLabel"
+      />
+      <header-item :value="formattedFiveYearCOB" :label="fiveYearCOBLabel" />
+      <header-item :value="formattedTotalCOB" :label="totalCOBLabel" />
+    </div>
+  </div>
   <DetailedTable
     :mortgageData="mortgage"
     :monthLabel="monthLabel"
     :yearLabel="yearLabel"
-    :paymentLabel="paymentLabel"
+    :paymentLabel="monthlyPaymentLabel"
     :interestPaymentLabel="interestPaymentLabel"
     :principalPaymentLabel="principalPaymentLabel"
     :extraPaymentLabel="extraPaymentLabel"
@@ -28,22 +38,22 @@
 </template>
 
 <script>
-import DetailedHeader from "@/components/DetailedHeader.vue";
 import DetailedTable from "@/components/DetailedTable.vue";
 import MortgageCalculator from "@/mortgageCalculator.js";
+import HeaderItem from "@/components/HeaderItem.vue";
 
 export default {
   name: "App",
   components: {
-    DetailedHeader,
-    DetailedTable
+    DetailedTable,
+    HeaderItem
   },
   data: function() {
     return {
       mortgage: [],
       yearLabel: "Year",
       monthLabel: "Month",
-      paymentLabel: "Payment",
+      monthlyPaymentLabel: "Payment",
       annualInterestRateLabel: "Annual Interest Rate",
       interestPaymentLabel: "Interest",
       principalPaymentLabel: "Principal",
