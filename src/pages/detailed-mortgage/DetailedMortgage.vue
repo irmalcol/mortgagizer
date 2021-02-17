@@ -7,9 +7,9 @@
       />
     </div>
     <div class="header-row multiple-header-item">
-      <header-item
-        :value="formattedAnnualInterestRate"
-        :label="annualInterestRateLabel"
+      <header-input-percentage
+        v-model.number="annualInterestRate"
+        :fieldLabel="annualInterestRateLabel"
       />
       <header-input-dollar-amount
         v-model.number="monthlyPayment"
@@ -42,13 +42,15 @@ import DetailedTable from "./DetailedTable.vue";
 import MortgageCalculator from "@/mortgageCalculator.js";
 import HeaderItem from "@/components/HeaderItem.vue";
 import HeaderInputDollarAmount from "./HeaderInputDollarAmount.vue";
+import HeaderInputPercentage from "./HeaderInputPercentage.vue";
 
 export default {
   name: "App",
   components: {
     DetailedTable,
     HeaderItem,
-    HeaderInputDollarAmount
+    HeaderInputDollarAmount,
+    HeaderInputPercentage
   },
   data: function() {
     return {
