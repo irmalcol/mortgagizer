@@ -83,15 +83,6 @@ export default {
         return `${years} years, ${months} months`;
       }
     },
-    formattedStartingPrincipal() {
-      return this.formatCurrency(this.startingPrincipal);
-    },
-    formattedAnnualInterestRate() {
-      return this.formatPercent(this.annualInterestRate);
-    },
-    formattedMonthlyPayment() {
-      return this.formatCurrency(this.monthlyPayment);
-    },
     formattedFiveYearCOB() {
       let fiveYearCOB = 0;
       const mortgageLength = this.mortgage.length;
