@@ -19,8 +19,8 @@
         :value="formattedTimeRemaining"
         :label="timeRemainingLabel"
       />
-      <header-item :value="formattedFiveYearCOB" :label="fiveYearCOBLabel" />
-      <header-item :value="formattedTotalCOB" :label="totalCOBLabel" />
+      <header-dollar-amount :value="fiveYearCOB" :label="fiveYearCOBLabel" />
+      <header-dollar-amount :value="totalCOB" :label="totalCOBLabel" />
     </div>
   </div>
   <DetailedTable
@@ -43,6 +43,7 @@ import MortgageCalculator from "@/mortgageCalculator.js";
 import HeaderItem from "@/components/HeaderItem.vue";
 import HeaderInputDollarAmount from "./HeaderInputDollarAmount.vue";
 import HeaderInputPercentage from "./HeaderInputPercentage.vue";
+import HeaderDollarAmount from "./HeaderDollarAmount.vue";
 
 export default {
   name: "App",
@@ -50,7 +51,8 @@ export default {
     DetailedTable,
     HeaderItem,
     HeaderInputDollarAmount,
-    HeaderInputPercentage
+    HeaderInputPercentage,
+    HeaderDollarAmount
   },
   data: function() {
     return {
@@ -73,6 +75,24 @@ export default {
     };
   },
   computed: {
+    fiveYearCOB() {
+      let fiveYearCOB = 0;
+      const mortgageLength = this.mortgage.length;
+      const fiveYearsInMonths = 60;
+      if (mortgageLength > 0 && mortgageLength < 60) {
+        fiveYearCOB = this.mortgage[mortgageLength - 1].totalCOB;
+      } else if (mortgageLength >= 60) {
+        fiveYearCOB = this.mortgage[fiveYearsInMonths - 1].totalCOB;
+      }
+      return fiveYearCOB;
+    },
+    totalCOB() {
+      let totalCOB = 0;
+      if (this.mortgage.length > 0) {
+        totalCOB = this.mortgage[this.mortgage.length - 1].totalCOB;
+      }
+      return totalCOB;
+    },
     formattedTimeRemaining() {
       if (this.mortgage.length < 1) {
         return "0 years, 0 months";
@@ -82,24 +102,6 @@ export default {
         const months = String(lastPaymentData.month % 12);
         return `${years} years, ${months} months`;
       }
-    },
-    formattedFiveYearCOB() {
-      let fiveYearCOB = 0;
-      const mortgageLength = this.mortgage.length;
-      const fiveYearsInMonths = 60;
-      if (mortgageLength > 0 && mortgageLength < 60) {
-        fiveYearCOB = this.mortgage[mortgageLength - 1].totalCOB;
-      } else if (mortgageLength >= 60) {
-        fiveYearCOB = this.mortgage[fiveYearsInMonths - 1].totalCOB;
-      }
-      return this.formatCurrency(fiveYearCOB);
-    },
-    formattedTotalCOB() {
-      let totalCOB = 0;
-      if (this.mortgage.length > 0) {
-        totalCOB = this.mortgage[this.mortgage.length - 1].totalCOB;
-      }
-      return this.formatCurrency(totalCOB);
     }
   },
   methods: {
