@@ -14,16 +14,14 @@ export default {
   },
   computed: {
     formattedValue() {
-      return this.formatCurrencyNoDecimals(this.value);
+      return this.formatCurrency(this.value);
     }
   },
   methods: {
-    formatCurrencyNoDecimals: function(amount) {
+    formatCurrency: function(amount) {
       const formatter = new Intl.NumberFormat("en-CA", {
         style: "currency",
-        currency: "CAD",
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0
+        currency: "CAD"
       });
       return formatter.format(amount);
     }
