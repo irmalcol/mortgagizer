@@ -1,9 +1,9 @@
 <template>
   <div class="detailed-header">
     <div class="header-row single-header-item">
-      <header-item
-        :value="formattedStartingPrincipal"
-        :label="startingPrincipalLabel"
+      <header-input-dollar-amount
+        v-model.number="startingPrincipal"
+        :fieldLabel="startingPrincipalLabel"
       />
     </div>
     <div class="header-row multiple-header-item">
@@ -41,12 +41,14 @@
 import DetailedTable from "./DetailedTable.vue";
 import MortgageCalculator from "@/mortgageCalculator.js";
 import HeaderItem from "@/components/HeaderItem.vue";
+import HeaderInputDollarAmount from "./HeaderInputDollarAmount.vue";
 
 export default {
   name: "App",
   components: {
     DetailedTable,
-    HeaderItem
+    HeaderItem,
+    HeaderInputDollarAmount
   },
   data: function() {
     return {
