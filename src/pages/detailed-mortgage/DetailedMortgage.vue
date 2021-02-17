@@ -46,7 +46,7 @@ import HeaderInputPercentage from "./HeaderInputPercentage.vue";
 import HeaderDollarAmount from "./HeaderDollarAmount.vue";
 
 export default {
-  name: "App",
+  name: "detailed-mortgage",
   components: {
     DetailedTable,
     HeaderItem,
