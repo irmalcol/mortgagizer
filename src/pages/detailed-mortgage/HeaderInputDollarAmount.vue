@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: "startingPrincipal",
+  name: "header-input-dollar-amount",
   props: {
     modelValue: Number,
     fieldLabel: String

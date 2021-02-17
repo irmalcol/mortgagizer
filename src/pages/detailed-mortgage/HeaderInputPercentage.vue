@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: "startingPrincipal",
+  name: "header-input-percentage",
   props: {
     modelValue: Number,
     fieldLabel: String
