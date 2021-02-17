@@ -11,9 +11,9 @@
         :value="formattedAnnualInterestRate"
         :label="annualInterestRateLabel"
       />
-      <header-item
-        :value="formattedMonthlyPayment"
-        :label="monthlyPaymentLabel"
+      <header-input-dollar-amount
+        v-model.number="monthlyPayment"
+        :fieldLabel="monthlyPaymentLabel"
       />
       <header-item
         :value="formattedTimeRemaining"
