@@ -15,8 +15,8 @@
         v-model.number="monthlyPayment"
         :fieldLabel="monthlyPaymentLabel"
       />
-      <header-item
-        :value="formattedTimeRemaining"
+      <header-time-remaining
+        :value="monthsRemaining"
         :label="timeRemainingLabel"
       />
       <header-dollar-amount :value="fiveYearCOB" :label="fiveYearCOBLabel" />
@@ -40,19 +40,19 @@
 <script>
 import DetailedTable from "./DetailedTable.vue";
 import MortgageCalculator from "@/mortgageCalculator.js";
-import HeaderItem from "@/components/HeaderItem.vue";
 import HeaderInputDollarAmount from "./HeaderInputDollarAmount.vue";
 import HeaderInputPercentage from "./HeaderInputPercentage.vue";
 import HeaderDollarAmount from "./HeaderDollarAmount.vue";
+import HeaderTimeRemaining from "./HeaderTimeRemaining.vue";
 
 export default {
   name: "detailed-mortgage",
   components: {
     DetailedTable,
-    HeaderItem,
     HeaderInputDollarAmount,
     HeaderInputPercentage,
-    HeaderDollarAmount
+    HeaderDollarAmount,
+    HeaderTimeRemaining
   },
   data: function() {
     return {
@@ -93,15 +93,14 @@ export default {
       }
       return totalCOB;
     },
-    formattedTimeRemaining() {
-      if (this.mortgage.length < 1) {
-        return "0 years, 0 months";
-      } else {
+    monthsRemaining() {
+      let months = 0;
+      if (this.mortgage.length > 1) {
         const lastPaymentData = this.mortgage[this.mortgage.length - 1];
-        const years = String(lastPaymentData.year);
-        const months = String(lastPaymentData.month % 12);
-        return `${years} years, ${months} months`;
+        months = lastPaymentData.month;
       }
+      console.log("Months remaining: ", months);
+      return months;
     }
   },
   methods: {
@@ -112,17 +111,6 @@ export default {
         2
       );
       this.mortgage = mortgage.generateMortgageData(this.monthlyPayment);
-    },
-    formatCurrency: function(amount) {
-      const formatter = new Intl.NumberFormat("en-CA", {
-        style: "currency",
-        currency: "CAD"
-      });
-      return formatter.format(amount);
-    },
-    formatPercent: function(amount) {
-      const convertedFromDecimalToPercent = amount * 100;
-      return `${convertedFromDecimalToPercent}%`;
     }
   }
 };
