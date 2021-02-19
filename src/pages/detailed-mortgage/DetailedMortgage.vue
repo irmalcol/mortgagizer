@@ -99,7 +99,6 @@ export default {
         const lastPaymentData = this.mortgage[this.mortgage.length - 1];
         months = lastPaymentData.month;
       }
-      console.log("Months remaining: ", months);
       return months;
     }
   },
@@ -117,26 +116,6 @@ export default {
 </script>
 
 <style lang="scss">
-// Global styles
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-table {
-  border-collapse: collapse;
-}
-
-#app {
-  font-family: var(--main-font-family);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: var(--main-text-color);
-  margin-top: 60px;
-}
-
 .header-row {
   display: flex;
   flex-wrap: wrap;
