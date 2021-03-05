@@ -32,5 +32,7 @@ table {
   text-align: center;
   color: var(--main-text-color);
   margin-top: 60px;
+  // max-width: 1200px;
+  margin: 0 auto;
 }
 </style>
